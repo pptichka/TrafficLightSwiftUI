@@ -42,13 +42,11 @@ struct ContentView: View {
         if buttonTitle == "START" {
             buttonTitle = "NEXT"
         }
-        
         switch currentLight {
         case .red:
             redLight.opacity = 1
             greenLight.opacity = 0.3
             currentLight = .yellow
-            buttonTitle = "NEXT"
         case .yellow:
             redLight.opacity = 0.3
             yellowLight.opacity = 1
