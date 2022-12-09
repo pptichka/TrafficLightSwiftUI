@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var greenLight = CircleView(color: .green, opacity: 0.3)
     
     @State private var currentLight = TrafficLight.red
+    @State private var buttonTitle = "START"
     
     var body: some View {
         
@@ -25,7 +26,7 @@ struct ContentView: View {
                 greenLight
                 Spacer()
                 Button(action: didTapped) {
-                    Text("START")
+                    Text(buttonTitle)
                         .font(.title)
                         .foregroundColor(.white)
                         .padding()
@@ -38,12 +39,16 @@ struct ContentView: View {
     }
     
     private func didTapped() {
+        if buttonTitle == "START" {
+            buttonTitle = "NEXT"
+        }
         
         switch currentLight {
         case .red:
             redLight.opacity = 1
             greenLight.opacity = 0.3
             currentLight = .yellow
+            buttonTitle = "NEXT"
         case .yellow:
             redLight.opacity = 0.3
             yellowLight.opacity = 1
